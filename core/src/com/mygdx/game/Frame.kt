@@ -3,17 +3,10 @@ package com.mygdx.game
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.physics.box2d.Body
-import com.badlogic.gdx.physics.box2d.World
-import com.badlogic.gdx.physics.box2d.PolygonShape
-import com.badlogic.gdx.physics.box2d.BodyDef
+import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.scenes.scene2d.Actor
 
-class Frame(val world:World, width:Float, height:Float) : Actor() {
-    private val bodyUP : Body
-    private val bodyDOWN : Body
-    private val bodyLEFT : Body
-    private val bodyRIGHT : Body
+class Frame(world:World, width:Float, height:Float) : Actor() {
     private val sr = ShapeRenderer()
     init{
         this.width = width
@@ -30,10 +23,10 @@ class Frame(val world:World, width:Float, height:Float) : Actor() {
         bdDOWN.type = BodyDef.BodyType.StaticBody
         bdLEFT.type = BodyDef.BodyType.StaticBody
         bdRIGHT.type = BodyDef.BodyType.StaticBody
-        bodyUP = world.createBody(bdUP)
-        bodyDOWN = world.createBody(bdDOWN)
-        bodyLEFT = world.createBody(bdLEFT)
-        bodyRIGHT = world.createBody(bdRIGHT)
+        val bodyUP = world.createBody(bdUP)
+        val bodyDOWN = world.createBody(bdDOWN)
+        val bodyLEFT = world.createBody(bdLEFT)
+        val bodyRIGHT = world.createBody(bdRIGHT)
         val groundBox = PolygonShape()
         val groundBoxSide = PolygonShape()
         groundBox.setAsBox(width, 0.0001f)

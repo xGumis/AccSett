@@ -28,6 +28,7 @@ allprojects {
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        ktxVersion = '1.9.8-b5'
     }
 
     repositories {
@@ -47,7 +48,6 @@ project(":android") {
 
     dependencies {
         implementation project(":core")
-        implementation "io.github.libktx:ktx-actors:1.9.8-b5"
         implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
@@ -75,10 +75,12 @@ project(":core") {
 
 
     dependencies {
+        implementation "com.codeandweb.physicseditor:gdx-pe-loader:1.1.0"
         implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        implementation "io.github.libktx:ktx-actors:$ktxVersion"
     }
 }
 
