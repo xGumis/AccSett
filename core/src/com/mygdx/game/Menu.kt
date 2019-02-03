@@ -6,11 +6,12 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
+import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.mygdx.game.Labyrinth.LabyrinthGame
 import ktx.actors.onClick
 
 class Menu(val game : Start, val sensor: Sensor) : Screen {
-    private val UI = Stage()
+    private val UI = Stage(ScreenViewport())
     init{
         Gdx.input.inputProcessor = UI
         val label = Label(sensor.scale.toString(),game.skin,"black")
