@@ -14,8 +14,8 @@ class Player(val world: World, pos_x: Float, pos_y: Float) : Image(Texture("skin
     private var body: Body
     private var delete: Boolean = false
     init{
-        this.setSize(this.width, this.height)
-        this.setPosition(Gdx.graphics.width/2f, Gdx.graphics.height/2f)
+        this.setSize(20f, 20f)
+        this.setPosition(Gdx.graphics.width/2f, Gdx.graphics.height/2f+100f)
         val bd = BodyDef()
         bd.position.set(this.x, this.y)
         bd.type = BodyDef.BodyType.DynamicBody

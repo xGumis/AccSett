@@ -24,12 +24,7 @@ class HexActor(world: World,originPoint: Vector2,h: Float): Actor() {
 
     val vertices : FloatArray
     private var body: Body
-
-    /*
-    val playerVertices : FloatArray
-*/
     val indices : ShortArray
-//    val playerIndices : ShortArray
     val sr = ShapeRenderer()
 
     init {
@@ -49,14 +44,8 @@ class HexActor(world: World,originPoint: Vector2,h: Float): Actor() {
                 x+(height* sqrt(3f)/2),y,
                 x+(height* sqrt(3f)/4),y-(height/4)
         )
-        /*playerVertices = floatArrayOf(
-                Gdx.graphics.width.toFloat()/2,Gdx.graphics.height.toFloat()/2,
-                Gdx.graphics.width.toFloat()/2+(height/8),Gdx.graphics.height.toFloat()/2+(height/4),
-                Gdx.graphics.width.toFloat()/2+(height/4),Gdx.graphics.height.toFloat()/2
-        )*/
         val ear = EarClippingTriangulator()
         indices = ear.computeTriangles(vertices)
-        /*playerIndices = ear.computeTriangles(playerVertices)*/
 
         val bd = BodyDef()
         bd.position.set(x, y)
@@ -88,22 +77,7 @@ class HexActor(world: World,originPoint: Vector2,h: Float): Actor() {
         event.type = InputEvent.Type.touchUp
         this.fire(event)
     }
-    /*override fun hit(x: Float, y: Float, touchable: Boolean): Actor? {
-        if(touchable&&getTouchable() == Touchable.enabled){
-            val a = height/2
-            if(
-                    (
-                            (a* sqrt(3f)/2>x && x>0)&&
-                                    (y< sqrt(3f)*x/3+a && y>sqrt(3f)*x/(-3))
-                            )||
-                    (
-                            ((x>a* sqrt(3f)/2 && x<a* sqrt(3f))&&
-                                    (y<sqrt(3f)*x/(-3)+2*a && y>sqrt(3f)*x/3-a)
-                            )
-                    ))return this
-        }
-        return null
-    }*/
+
 
     override fun draw(batch: Batch?, parentAlpha: Float) {
         super.draw(batch, parentAlpha)
@@ -129,17 +103,14 @@ class HexActor(world: World,originPoint: Vector2,h: Float): Actor() {
         sr.color = Color.GREEN
         sr.polygon(vertices)
         sr.end()
-        /*sr.begin(ShapeRenderer.ShapeType.Filled)
-        sr.color = Color.GOLD
-        sr.triangle(playerVertices[0],playerVertices[1],playerVertices[2],playerVertices[3],playerVertices[4],playerVertices[5])
-        sr.end()*/
         batch?.begin()
     }
 
-    fun isOccupied() : Boolean{
-        return color != myColors.empty
-    }
+
     fun Clear(){
-        color = myColors.empty
+        var rand = random(1,3)
+        if(rand == 1) color = myColors.rand1
+        if(rand == 2) color = myColors.rand2
+        if(rand == 3) color = myColors.rand3
     }
 }

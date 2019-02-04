@@ -16,8 +16,8 @@ class Box(val world:World, width:Float, height:Float) : Actor()  {
     private val bodyDOWN : Body
     private val bodyLEFT : Body
     private val bodyRIGHT : Body
-    private val sizex = Gdx.graphics.height-100f
-    private val sizey = sizex* (2f/ sqrt(3f))
+    private val sizex = width
+    private val sizey = height
     private val sr = ShapeRenderer()
     init{
         this.width = width
@@ -26,10 +26,10 @@ class Box(val world:World, width:Float, height:Float) : Actor()  {
         val bdDOWN = BodyDef()
         val bdLEFT = BodyDef()
         val bdRIGHT = BodyDef()
-        bdUP.position.set((Gdx.graphics.width)/2f, 30f)
-        bdDOWN.position.set((Gdx.graphics.width)/2f, sizex+70f)
-        bdLEFT.position.set((Gdx.graphics.width-sizey)/2f-10f, 50f)
-        bdRIGHT.position.set((Gdx.graphics.width+sizey)/2f+40f, 50f)
+        bdUP.position.set((Gdx.graphics.width)/2f,(Gdx.graphics.height)/2f-10f)
+        bdDOWN.position.set((Gdx.graphics.width)/2f,(Gdx.graphics.height)/2f+sizex+20f)
+        bdLEFT.position.set((Gdx.graphics.width-sizey)/2f-10f,(Gdx.graphics.height)/2f)
+        bdRIGHT.position.set((Gdx.graphics.width+sizey)/2f+40f,(Gdx.graphics.height)/2f)
         bdUP.type = BodyDef.BodyType.StaticBody
         bdDOWN.type = BodyDef.BodyType.StaticBody
         bdLEFT.type = BodyDef.BodyType.StaticBody
