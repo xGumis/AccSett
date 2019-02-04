@@ -14,7 +14,8 @@ class Menu(val game : Start, val sensor: Sensor) : Screen {
     private val UI = Stage(ScreenViewport())
     init{
         Gdx.input.inputProcessor = UI
-        val label = Label(sensor.scale.toString(),game.skin,"black")
+        val label = Label("2 in 1",game.skin,"black")
+        label.setFontScale(10f)
         label.setSize(Gdx.graphics.width/2f,Gdx.graphics.height/10f)
         label.setPosition(Gdx.graphics.width/4f,Gdx.graphics.height*(8/10f))
         UI.addActor(label)
@@ -31,7 +32,7 @@ class Menu(val game : Start, val sensor: Sensor) : Screen {
         val hex = TextButton("Hex",game.skin)
         hex.setSize(Gdx.graphics.width/2f,Gdx.graphics.height/10f)
         hex.setPosition(Gdx.graphics.width/4f,Gdx.graphics.height*(6/10f))
-        hex.onClick { game.screen = Menu(game,sensor) }
+        hex.onClick { game.screen = HexGame(game,sensor,9) }
         UI.addActor(hex)
     }
     override fun hide() {
